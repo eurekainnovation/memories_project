@@ -2,11 +2,13 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
@@ -25,6 +27,8 @@ class Migration(migrations.Migration):
             name='Gallery',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('contributor', models.BooleanField(default=True)),
+                ('albums', models.ForeignKey(to='albums.Album', null=True)),
             ],
             options={
             },
@@ -52,25 +56,11 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='User',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('email', models.CharField(max_length=128)),
-                ('password', models.CharField(max_length=128)),
-                ('fname', models.CharField(max_length=128)),
-                ('lname', models.CharField(max_length=128)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='UserProfile',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('website', models.URLField(blank=True)),
                 ('picture', models.ImageField(upload_to=b'profile_images', blank=True)),
-                ('user', models.OneToOneField(to='albums.User')),
+                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
             ],
             options={
             },
@@ -85,13 +75,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gallery',
             name='usr',
-            field=models.ForeignKey(to='albums.User'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='album',
-            name='gallery',
-            field=models.ForeignKey(to='albums.Gallery'),
+            field=models.ForeignKey(to='albums.UserProfile', null=True),
             preserve_default=True,
         ),
     ]

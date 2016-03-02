@@ -64,6 +64,8 @@ ROOT_URLCONF = 'memories_project.urls'
 
 WSGI_APPLICATION = 'memories_project.wsgi.application'
 
+LOGIN_URL = '/albums/login/'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

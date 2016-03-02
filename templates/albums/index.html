@@ -5,9 +5,17 @@
     </head>
 
     <body>
-        <h1>Albums says hello</h1>
+       {% if user.is_authenticated %}
+		<h1>Albums says... hello {{ user.username }}!</h1>
+		<a href="/albums/logout/">Logout</a><br />
+		{% else %}
+		<h1>Album says... hello world!</h1>
+		<a href="/albums/signup/">Register Here</a><br />
+		<a href="/albums/login/">Login</a><br />
+		{% endif %}
 		<p>Hello this is in <strong>{{ boldmessage }} </strong></p>
     </body>
     
     <a href="/albums/new/">New Album</a>
+    <br>
 </html>
