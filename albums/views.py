@@ -6,11 +6,13 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
+@login_required
 def index(request):
 	context_dict = {'boldmessage': "This is in bold"}
 	
 	return render(request, 'albums/index.html', context_dict)
 	
+@login_required
 def new(request):
 
 	return render(request, 'albums/new.html')
