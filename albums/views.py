@@ -5,12 +5,35 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+# Import the models
+from albums.models import UserProfile
+from albums.models import Album
+from albums.models import Message
+from albums.models import Photo
+from albums.models import Gallery
+
+
 
 @login_required
 def index(request):
-	context_dict = {'boldmessage': "This is in bold"}
+
+	
+	print(request.user.id)
+	#List of gallery objects
+	gallery_list = Gallery.objects.filter(usr__id = request.user.id )
+	#gallery_list = Gallery.objects.all()
+	for instance in gallery_list:
+		print(instance.albums.title)
+		print(instance.usr.id)
+	
+	test = Album.objects.filter(pk=5)
+
+
+	
+	context_dict = {'gallery': gallery_list}
 	
 	return render(request, 'albums/index.html', context_dict)
+	    	
 	
 @login_required
 def new(request):

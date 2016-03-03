@@ -19,7 +19,7 @@ class Album(models.Model):
         return self.title
 
 class Gallery(models.Model):
-    usr = models.ForeignKey(UserProfile, null=True)
+    usr = models.ForeignKey(User, null=True)
     albums = models.ForeignKey(Album, null=True)
     contributor = models.BooleanField(default=True)
 
