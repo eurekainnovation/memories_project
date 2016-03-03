@@ -51,8 +51,7 @@ def register(request):
 			
 			registered = True
 			
-			# Invalid forms, print mistakes to the terminal
-			
+		# Invalid forms, print mistakes to the terminal
 		else:
 			print user_form.errors, profile_form.errors
 		
@@ -61,7 +60,7 @@ def register(request):
 		user_form = UserForm()
 		profile_form = UserProfileForm()
 		
-	return render(request, 'albums/signup.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered}) 
+	return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered}) 
 	
 	
 def user_login(request):
@@ -101,9 +100,11 @@ def user_login(request):
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
-        # No context variables to pass to the template system, hence the
-        # blank dictionary object...
-        return render(request, 'albums/login.html', {})
+		user_form = UserForm()
+		profile_form = UserProfileForm()
+		# No context variables to pass to the template system, hence the
+		# blank dictionary object...
+		return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form})
 
 @login_required
 def restricted(request):

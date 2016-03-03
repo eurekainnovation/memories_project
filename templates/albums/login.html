@@ -7,16 +7,41 @@
 
     <body>
         <h1>Login to Memories</h1>
-
+        
+        <!-- The login form should match the login url, which will be mapped to the user_login view  -->
         <form id="login_form" method="post" action="/albums/login/">
             {% csrf_token %}
             Username: <input type="text" name="username" value="" size="50" />
             <br />
             Password: <input type="password" name="password" value="" size="50" />
             <br />
-
+            
             <input type="submit" value="submit" />
         </form>
+        
+		<br>
+		<br>
+		{% if registered %}
+		<p>Registration complete, sign in with registered details above</p>
+		{% endif %}
+		<br>
+		<h1>Not registered? Sign Up below</h1>
+		
+		<!-- The login form should match the login url, which will be mapped to the user_login view  -->
+        <form id="user_form" method="post" action="/albums/signup/"
+                enctype="multipart/form-data">
 
+            {% csrf_token %}
+
+            <!-- Display each form. The as_p method wraps each element in a paragraph
+                 (<p>) element. This ensures each element appears on a new line,
+                 making everything look neater. -->
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" name="submit" value="Register" />
+        </form>
+	
     </body>
 </html>
