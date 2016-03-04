@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+
 <html>
     <head>
         <title>albums</title>
@@ -9,20 +9,19 @@
 		
 		<h1>Albums says... hello {{ user.username }}!</h1>
 		
-		<h2>Add photos, new day</h2>
+		<h2>Albums below</h2>
 		<a href="#">Click here to add</a>
     	<br><br>
-   		<h3>This is the cover photo</h3>
-    	<img src="{% static "images/bridge.jpg" %}" alt="bridge picture" />
-   		<br>
+
 		<a href="/albums/logout/">Logout</a><br />
 				
 		{% if gallery %}
 		<h3>{{ user.username }}'s Albums</h3>
             <ul>
                 {% for i in gallery %}
+                
                 <!-- Following line changed to add an HTML hyperlink -->
-                <li><strong>{{ i.albums.title }} </strong></li>
+                <li><img height = 200px src="../media/{{ i.albums.cover_picture }}" alt="Picture of Rango" /></li>
                 {% endfor %}
             </ul>
        {% else %}
