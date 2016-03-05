@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>albums</title>
+
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
+<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
+<script>
+    $(function() {
+        $(".card").flip({
+            trigger: 'click'
+        });
+    });
+</script>
+
+<style>
+
+
+.back { text-align: center;
+background-color: #e6e6e6;
+ font-size: 400%;
+}
+</style>
+
+    </head>
+
+    <body>
+
+		
+		<h1>{{ album.title }} </h1>
+		<p>Hello</p>
+		<h2>Albums below</h2>
+		<a href="#">Click here to add</a>
+    	<br><br>
+		{% if photos %}
+
+            {% for photo in photos %}
+            <div class="card" style="width: 500px; height: 350px">
+   				<div class="front" style="padding: 10px;">
+       				<img width = 100% height = 100% src="/media/{{ photo.photo }}" alt="Picture of Rango" />
+    			</div>
+    			
+    			<div class="back" style="padding: 10px;">
+        			<div style="height: 170px">
+           			A Scoby diver, diving for muff
+        			</div>
+    			</div>
+			</div>
+            {% endfor %}
+        
+       {% else %}
+            <strong>There are photos to show.</strong>
+       {% endif %}
+        <br>
+         <br>
+           <a href="/albums/">Home</a>
+           
+
+		
+    </body>
+
+</html>

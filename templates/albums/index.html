@@ -14,14 +14,13 @@
     	<br><br>
 
 		<a href="/albums/logout/">Logout</a><br />
-				
 		{% if gallery %}
 		<h3>{{ user.username }}'s Albums</h3>
             <ul>
                 {% for i in gallery %}
                 
                 <!-- Following line changed to add an HTML hyperlink -->
-                <li><img height = 200px src="../media/{{ i.albums.cover_picture }}" alt="Picture of Rango" /></li>
+                <li><a href = "{{ i.albums.slug }}"><img height = 200px src="../media/{{ i.albums.cover_picture }}" alt="Picture of Rango" /></a></li>
                 {% endfor %}
             </ul>
        {% else %}

@@ -16,9 +16,7 @@ from albums.models import Gallery
 
 @login_required
 def index(request):
-
-	
-	print(request.user.id)
+	print(request.user.username)
 	#List of gallery objects
 	gallery_list = Gallery.objects.filter(usr__id = request.user.id )
 	#gallery_list = Gallery.objects.all()
@@ -28,8 +26,6 @@ def index(request):
 	
 	test = Album.objects.filter(pk=5)
 
-
-	
 	context_dict = {'gallery': gallery_list}
 	
 	return render(request, 'albums/index.html', context_dict)
@@ -129,9 +125,6 @@ def user_login(request):
 		# blank dictionary object...
 		return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form})
 
-@login_required
-def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
 	
 @login_required
 def user_logout(request):
@@ -140,3 +133,29 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/albums/')
+    
+@login_required
+def memory(request, album_name_slug):
+	context_dict = {}
+	
+	 
+	try:
+		gallery_list = Gallery.objects.filter(usr__id = request.user.id )
+		
+		for i in gallery_list:
+			if i.albums.slug == album_name_slug:
+				print(i.albums.title)
+				context_dict['album'] = i.albums
+				memory = i.albums
+				
+		photo_list = Photo.objects.filter(album=memory)
+
+		context_dict['photos'] = photo_list
+	except Album.DoesNotExist:
+		pass
+	
+	return render(request, 'albums/memory.html', context_dict)
+
+		
+		
+		

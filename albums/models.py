@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-slug = models.SlugField()
+from django.template.defaultfilters import slugify
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
@@ -12,14 +12,18 @@ class UserProfile(models.Model):
 
 
 class Album(models.Model):
-    title = models.CharField(max_length=128, unique=True)
+    title = models.CharField(max_length=128)
     cover_picture = models.ImageField(upload_to='cover_images', blank=True)
     slug = models.SlugField() 
     
     def save(self, *args, **kwargs):
-    	self.slug = slugify(self.title)
-    	super(Album, self),save(*args, **kwargs)
-
+            # Uncomment if you don't want the slug to change every time the name changes
+            #if self.id is None:
+                    #self.slug = slugify(self.name)
+        self.slug = slugify(self.title)
+        super(Album, self).save(*args, **kwargs)
+    	
+    
 
     def __unicode__(self):
         return self.title
