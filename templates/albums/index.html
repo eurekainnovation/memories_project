@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-
+{% extends 'albums/base.html' %}
 <html>
     <head>
         <title>albums</title>
     </head>
-
+{% block body_block %}
     <body>
 		
 		<h1>Albums says... hello {{ user.username }}!</h1>
@@ -28,7 +28,7 @@
        {% endif %}
 		
     </body>
-    
+    {% endblock %}
     <a href="/albums/new/">New Album</a>
     <br>
 </html>

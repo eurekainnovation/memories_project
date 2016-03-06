@@ -44,7 +44,8 @@ class Photo(models.Model):
 
 class Message(models.Model):
     photo = models.ForeignKey(Photo)
-    comment = models.CharField(max_length=128, unique=True)
+    comment = models.CharField(max_length=512, unique=True)
+    usr = models.ForeignKey(User, null=True)
 
     def __unicode__(self):
         return self.comment

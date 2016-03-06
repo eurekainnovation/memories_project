@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from datetime import datetime
 # Import the models
 from albums.models import UserProfile
 from albums.models import Album
@@ -19,16 +20,38 @@ def index(request):
 	print(request.user.username)
 	#List of gallery objects
 	gallery_list = Gallery.objects.filter(usr__id = request.user.id )
-	#gallery_list = Gallery.objects.all()
-	for instance in gallery_list:
-		print(instance.albums.title)
-		print(instance.usr.id)
-	
-	test = Album.objects.filter(pk=5)
 
 	context_dict = {'gallery': gallery_list}
 	
-	return render(request, 'albums/index.html', context_dict)
+	visits = request.session.get('visits')
+	if not visits:
+		visits = 1
+	reset_last_visit_time = False
+	
+	last_visit = request.session.get('last_visit')
+	
+	# if last visit cookie exists, update the latest visit time
+	if last_visit:
+		last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
+		
+		if (datetime.now() - last_visit_time).seconds > 0:
+			visits = visits +1
+			reset_last_visit_time = True
+	
+	# cookie doesnt exist
+	else:
+		reset_last_visit_time = True
+		
+	if reset_last_visit_time:
+		request.session['last_visit'] = str(datetime.now())
+		request.session['visits'] = visits
+		
+	context_dict['visits'] = visits
+	
+	response = render(request, 'albums/index.html', context_dict)
+		
+	return response
+	
 	    	
 	
 @login_required
@@ -138,19 +161,33 @@ def user_logout(request):
 def memory(request, album_name_slug):
 	context_dict = {}
 	
-	 
+	if request.session.get('visits'):
+		count = request.session.get('visits')
+		
+	else:
+		count = 0
+	
+	context_dict['visits'] = count
+	
 	try:
+		# Search gallery for all the albums corresponding to the logged in user
 		gallery_list = Gallery.objects.filter(usr__id = request.user.id )
 		
+		#Within the albums returned, see if any are by the name of the album slug parameter
 		for i in gallery_list:
 			if i.albums.slug == album_name_slug:
 				print(i.albums.title)
 				context_dict['album'] = i.albums
 				memory = i.albums
-				
+		
+		#next get list of all the photos associated with the selected memory and add to context dict
 		photo_list = Photo.objects.filter(album=memory)
-
 		context_dict['photos'] = photo_list
+		
+		#Get all the comments corresponding to each photo
+		comment_list = Message.objects.filter(photo=photo_list)
+		context_dict['comments'] = comment_list
+		
 	except Album.DoesNotExist:
 		pass
 	

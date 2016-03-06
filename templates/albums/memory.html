@@ -19,7 +19,12 @@
 
 .back { text-align: center;
 background-color: #e6e6e6;
- font-size: 400%;
+ font-size: 200%;
+}
+
+.add{ text-align: center;
+background-color: #e6e6e6;
+ font-size: 200%;
 }
 </style>
 
@@ -29,9 +34,9 @@ background-color: #e6e6e6;
 
 		
 		<h1>{{ album.title }} </h1>
-		<p>Hello</p>
+		<p>{{ visits }}</p>
 		<h2>Albums below</h2>
-		<a href="#">Click here to add</a>
+		
     	<br><br>
 		{% if photos %}
 
@@ -43,19 +48,26 @@ background-color: #e6e6e6;
     			
     			<div class="back" style="padding: 10px;">
         			<div style="height: 170px">
-           			A Scoby diver, diving for muff
+        			{% for message in comments %}
+        			{% if message.photo =  photo %}		
+           			<p>{{message.usr.username}}: {{message.comment}}</p>
+           			 {% endif %}
+           			 {% endfor %}
         			</div>
     			</div>
 			</div>
             {% endfor %}
-        
+        	<div class="add" style="width: 500px; height: 350px">
+        	<a href="#">Click here to add</a>
+        	</div>
        {% else %}
             <strong>There are photos to show.</strong>
        {% endif %}
         <br>
          <br>
+         <div>
            <a href="/albums/">Home</a>
-           
+           </div>
 
 		
     </body>

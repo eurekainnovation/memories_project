@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% extends 'albums/base.html' %}
 <html>
     <head>
 
         <title>Albums</title>
     </head>
-
+{% block body_block %}
     <body>
         <h1>Login to Memories</h1>
         
@@ -44,4 +45,5 @@
         </form>
 	
     </body>
+    {% endblock %}
 </html>
