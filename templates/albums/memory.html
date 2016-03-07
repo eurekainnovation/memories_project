@@ -1,75 +1,55 @@
-<!DOCTYPE html>
 
-<html>
-    <head>
-        <title>albums</title>
+{% extends 'albums/base.html' %}
 
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
-<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
-<script>
-    $(function() {
-        $(".card").flip({
-            trigger: 'click'
-        });
-    });
-</script>
+{% block head_block %}
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
+	<script>
+		$(function() {
+        	$(".card").flip({
+           		trigger: 'click'
+        	});
+    	});
+	</script>
 
-<style>
+{% endblock %}
 
+{% block body_block %}
 
-.back { text-align: center;
-background-color: #e6e6e6;
- font-size: 200%;
-}
-
-.add{ text-align: center;
-background-color: #e6e6e6;
- font-size: 200%;
-}
-</style>
-
-    </head>
-
-    <body>
-
+	<h1>{{ album.title }} </h1>
+	<p>{{ visits }}</p>
+	<br><br>
 		
-		<h1>{{ album.title }} </h1>
-		<p>{{ visits }}</p>
-		<h2>Albums below</h2>
-		
-    	<br><br>
-		{% if photos %}
-
-            {% for photo in photos %}
-            <div class="card" style="width: 500px; height: 350px">
-   				<div class="front" style="padding: 10px;">
-       				<img width = 100% height = 100% src="/media/{{ photo.photo }}" alt="Picture of Rango" />
-    			</div>
-    			
-    			<div class="back" style="padding: 10px;">
-        			<div style="height: 170px">
+	{% if photos %}
+	
+    	{% for photo in photos %}
+        <div class="card" style="width: 500px; height: 350px">
+   			<div class="front" style="padding: 10px;">
+       			<img width = 100% height = 100% src="/media/{{ photo.photo }}" alt="Picture of Rango" />
+    		</div>
+    		<div class="back" style="padding: 10px;">
+        		<div style="height: 170px">
         			{% for message in comments %}
         			{% if message.photo =  photo %}		
            			<p>{{message.usr.username}}: {{message.comment}}</p>
            			 {% endif %}
            			 {% endfor %}
-        			</div>
-    			</div>
-			</div>
-            {% endfor %}
-        	<div class="add" style="width: 500px; height: 350px">
+        		</div>
+    		</div>
+		</div>
+        {% endfor %}
+        
+        <div class="add" style="width: 500px; height: 350px">
         	<a href="#">Click here to add</a>
-        	</div>
+        </div>
+        
        {% else %}
             <strong>There are photos to show.</strong>
        {% endif %}
-        <br>
-         <br>
+       
          <div>
            <a href="/albums/">Home</a>
            </div>
 
-		
-    </body>
 
-</html>
+{% endblock %}

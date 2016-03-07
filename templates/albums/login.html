@@ -1,29 +1,53 @@
-<!DOCTYPE html>
+
 {% extends 'albums/base.html' %}
-<html>
-    <head>
 
-        <title>Albums</title>
-    </head>
+{% block head_block %}
+<style>
+body {
+    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+.full {
+    background: url({{ STATIC_URL }}/bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100vh;
+}
+
+
+.row {
+
+ 	padding:10px;
+ 	background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+</style>
+
+{% endblock %}
+
 {% block body_block %}
-    <body>
 
-        
-		<br>
-		<br>
-		{% if registered %}
+	{% if registered %}
 		<p>Registration complete, sign in with registered details above</p>
-		{% endif %}
-		<br>
-		
-<div
+	{% endif %}
+	
+<div class = "full">	
 <div class="container">
 	<h1>Not registered? Sign Up below</h1>
 	<br><br>
     <div class="row">
+    
+            <div class="col-md-5">
+        	<h2>This is the greatest application in the world and the greatest sign up page in the world. If you disagree you're a complete moron. </h2>
+        </div>
 		<form id="user_form" method="post" action="/albums/signup/" enctype="multipart/form-data">
         {% csrf_token %}
-        	<div class="col-lg-5">
+        	<div class="col-md-5 col-md-offset-1">
                 <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                 <div class="form-group">
                     <label for="InputName">{{user_form.username.label}}</label>
@@ -63,11 +87,9 @@
                 <input type="submit" name="submit" id="submit" value="Register" class="btn btn-info pull-right">
             </div>
         </form>
-            <div class="col-md-5 col-md-offset-2">
-            <p>This is the greatest application in the world and the greatest sign up page in the world. If you disagree you're a complete moron. </p>
-            </div>
+    
     </div>
 </div>
-    </body>
-    {% endblock %}
-</html>
+</div>
+	
+{% endblock %}
