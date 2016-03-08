@@ -194,5 +194,6 @@ def memory(request, album_name_slug):
 	return render(request, 'albums/memory.html', context_dict)
 
 		
-		
+def test(request):
+	return render(request, 'albums/test.html', {})
 		
