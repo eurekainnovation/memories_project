@@ -16,7 +16,7 @@
 
 	
 	.card {
-	margin: 0 auto;
+	width:100%
 	}
 	
 	#test {
@@ -29,10 +29,34 @@
 background-color: #f2f2f2;
 }
 
+.carousel img {
+
+  min-width: 100%;
+  height: 500px;
+  max-height: 500px;
+
+}
+
+#fi {
+margin-top:20px;
+}
 
 #cover {
 margin-top:100px;
 border-right: solid;
+}
+
+
+#pic {
+
+width:100%;
+}
+
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+   
 }
 	
 	</style>
@@ -41,7 +65,62 @@ border-right: solid;
 
 {% block body_block %}
 
+
+<div id="carousel-example" class="carousel slide" data-interval="false">
+	<ol class="carousel-indicators">
+ 	 	{% for cover in covers %}
+		<li data-target="#carousel-example" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+		{% endfor %}
+  </ol>
+
+  <div class="carousel-inner">
+    
+    <div class="item active">
+      <a href="#"><img id="pic" src="/media/{{ album.cover_picture }}" alt="cover photo" /></a>
+      <div class="carousel-caption">
+        <h2>{{ album.title }}</h2>
+        <h3>21st February 2014</h3>
+      </div>
+    </div>
+    
+    {% for cover in covers %}
+    
+    <div class="item">
+      <a href="#"><img src="/media/{{ cover.cover_picture }}" /></a>
+      <div class="carousel-caption">
+        <h3>{{ cover.title }}</h3>
+        <p>Just Kitten Around</p>
+      </div>
+    </div>
+    
+    {% endfor %}
+  </div>
+
+  <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+
 	
+
+	{% if photos %}
+	<div class = "row" id="fi">
+		{% for j in photos %}
+			{% if photos %}
+			<div class="col-lg-4 nopadding">
+				<img id ="pic" src="/media/{{ j.photo }}" />
+			</div>
+			{% endif %}
+		{% endfor %}
+    </div>
+    {% endif %}
+
+    
+    
 	
 		<div id = "cover" class="col-md-5">
 		    <div class="text-center">
@@ -60,10 +139,10 @@ border-right: solid;
 	    	<div class="center-block">
         	<div class="card" style="width: 500px; height: 350px">
    				<div class="front" style="padding: 10px;">
-       				<img width = 100% height = 100% src="/media/{{ photo.photo }}" alt="Picture of Rango" />
+       				<img id="pic" src="/media/{{ photo.photo }}" alt="Picture of Rango" />
     			</div>
     			<div class="back" style="padding: 10px;">
-        			<div style="height: 170px">
+        			<div style="height: 100%">
         				{% for message in comments %}
         				{% if message.photo =  photo %}		
            				<p>{{message.usr.username}}: {{message.comment}}</p>
@@ -83,6 +162,5 @@ border-right: solid;
          <div>
            <a href="/albums/test">Test</a>
            </div>
-
-
+        
 {% endblock %}

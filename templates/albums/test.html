@@ -1,255 +1,124 @@
-    <!-- Fixed navbar -->
-    <head>
-    
-        	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <style>
-    body {
-  padding-top: 70px;
-  border:1px solid black;
-  height:800px;
-}
+{% extends 'albums/base.html' %}
+{% block head_block %}
+<style>
+.carousel img {
 
-.mygrid-wrapper-div {
-    border: solid red 5px;
+  min-width: 100%;
+
+}
+</style>
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
+	<script>
+		$(function() {
+        	$("#card").flip({
+           		trigger: 'click'
+        	});
+    	});
+	</script>
+	
+	<style>
+
+	
+	.card {
+	width:100%
+	}
+	
+	.chi {
+	width:100px;
+	}
+	
+	#test {
     overflow: scroll;
-    height: 70%;
+    height:90vh;
+    
 }
-    </style>
-    </head>
-<body>
 
-    <h2>Page heading - I don't want this to scroll either</h2>
-        
-    <div class="mygrid-wrapper-div">
-        <table class="table">
-            <thead>
-                <th>Column 1</th>
-                <th>Column 2</th>
-                <th>Column 3</th>
-                <th>Column 4</th>
-                <th>Column 5</th>
-                <th>Column 6</th>
-                <th>Column 7</th>
-                <th>Column 8</th>
-                <th>Column 9</th>
-                <th>Column 10</th>
-                <th>Column 11</th>
-                <th>Column 12</th>
-                <th>Column 13</th>
-                <th>Column 14</th>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-             <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            <tr>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-                <td>Lotsa text here</td>
-            </tr>
-            </tbody>
-       </table>
-   </div> <!-- /container -->
-</body>
+	.back {
+background-color: #f2f2f2;
+}
+
+.carousel img {
+
+  min-width: 100%;
+  height: 500px;
+  max-height: 500px;
+
+}
+
+#fi {
+margin-top:20px;
+}
+
+#cover {
+margin-top:100px;
+border-right: solid;
+}
+
+
+#pic {
+
+width:100%;
+}
+
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+   
+}
+	
+	</style>
+{% endblock %}
+
+{% block body_block %}
+
+
+<div class = "row" id="fi">
+	<div class="col-lg-4 nopadding">
+<div id="card"> 
+  <div class="front"> 
+    Front content
+    <br>
+    asd
+        <br>
+    asd
+        <br>
+    asd
+        <br>
+    asd
+  </div> 
+  <div class="back">
+    Back content
+  </div> 
+</div>
+	</div>
+
+	<div id = "hi" class="col-lg-4 nopadding">
+		<img id ="pic" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
+	</div>
+
+	<div id = "hi" class="col-lg-4 nopadding">
+		<img id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
+	</div>
+	
+</div>
+
+<div class="center-block">
+    <div class="card" style="width: 500px; height: 350px">
+   		<div class="front" style="padding: 10px;">
+       		<img id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
+    	</div>
+    	<div class="back" style="padding: 10px;">
+        	<div>
+     dfdf
+        	</div>
+    	</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}

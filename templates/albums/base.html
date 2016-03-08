@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+{% load staticfiles %}
 <html>
     <head lang="en">
         <meta charset="UTF-8">
@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 		<title>Stampless - {% block title %}Best Memories{% endblock %}</title>
 		{% block head_block %}{% endblock %}
+		<script src="{% static "js/albums-jquery.js" %}"></script>
     	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
     </head>

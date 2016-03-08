@@ -173,12 +173,18 @@ def memory(request, album_name_slug):
 		# Search gallery for all the albums corresponding to the logged in user
 		gallery_list = Gallery.objects.filter(usr__id = request.user.id )
 		
-		#Within the albums returned, see if any are by the name of the album slug parameter
+		cover_list=()
+
+		
+		#Within the albums returned, see if any are by the name of the album slug parameter and get cover photos
 		for i in gallery_list:
+			cover_list = cover_list + (i.albums,)
 			if i.albums.slug == album_name_slug:
 				print(i.albums.title)
 				context_dict['album'] = i.albums
 				memory = i.albums
+				
+		context_dict['covers'] = cover_list
 		
 		#next get list of all the photos associated with the selected memory and add to context dict
 		photo_list = Photo.objects.filter(album=memory)
