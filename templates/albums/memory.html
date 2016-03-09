@@ -16,7 +16,8 @@
 
 	
 	.card {
-	width:100%
+	width:100%;
+	height:300px;
 	}
 	
 	#test {
@@ -48,7 +49,6 @@ border-right: solid;
 
 
 #pic {
-
 width:100%;
 }
 
@@ -104,24 +104,32 @@ width:100%;
   </a>
 </div>
 
-
-	
-
 	{% if photos %}
 	<div class = "row" id="fi">
-		{% for j in photos %}
+		{% for photo in photos %}
 			{% if photos %}
 			<div class="col-lg-4 nopadding">
-				<img id ="pic" src="/media/{{ j.photo }}" />
+				<div class="card">
+					<div class="front">
+						<img id ="pic" src="/media/{{ photo.photo }}" />
+					</div>
+	  			<div class="back" style="padding: 10px;">
+        			<div style="height: 100%">
+        				{% for message in comments %}
+        				{% if message.photo =  photo %}		
+           				<p>{{message.usr.username}}: {{message.comment}}</p>
+           				 {% endif %}
+           				 {% endfor %}
+        			</div>
+    			</div>
+				</div>
 			</div>
 			{% endif %}
 		{% endfor %}
     </div>
     {% endif %}
 
-    
-    
-	
+    	<!--
 		<div id = "cover" class="col-md-5">
 		    <div class="text-center">
        			<h1>{{ album.title }}</h1>
@@ -136,8 +144,8 @@ width:100%;
 		<div id = "test" class="col-md-7">
 			{% if photos %}
 	    	{% for photo in photos %}
-	    	<div class="center-block">
-        	<div class="card" style="width: 500px; height: 350px">
+	    	<div class="col-md-5">
+        	<div class="card">
    				<div class="front" style="padding: 10px;">
        				<img id="pic" src="/media/{{ photo.photo }}" alt="Picture of Rango" />
     			</div>
@@ -153,7 +161,7 @@ width:100%;
 			</div>
 			</div>
        		{% endfor %}
-		</div>
+		</div>-->
 	
      {% else %}
             <strong>There are photos to show.</strong>
