@@ -12,7 +12,7 @@
 	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
 	<script>
 		$(function() {
-        	$("#card").flip({
+        	$(".grid-container").flip({
            		trigger: 'click'
         	});
     	});
@@ -21,9 +21,11 @@
 	<style>
 
 	
-	.card {
-	width:100%
-	}
+.card {
+
+
+}
+
 	
 	.chi {
 	width:100px;
@@ -57,11 +59,6 @@ border-right: solid;
 }
 
 
-#pic {
-
-width:100%;
-}
-
 
 .nopadding {
    padding: 0 !important;
@@ -76,47 +73,29 @@ width:100%;
 
 
 <div class = "row" id="fi">
+
 	<div class="col-lg-4 nopadding">
-<div id="card"> 
-  <div class="front"> 
-    Front content
-    <br>
-    asd
-        <br>
-    asd
-        <br>
-    asd
-        <br>
-    asd
-  </div> 
-  <div class="back">
-    Back content
-  </div> 
-</div>
+		<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
 	</div>
 
 	<div id = "hi" class="col-lg-4 nopadding">
-		<img id ="pic" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
+		<img class="img-responsive" id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
 	</div>
 
 	<div id = "hi" class="col-lg-4 nopadding">
-		<img id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
+		<div class="row nopadding">
+    		<div class="col-md-1">
+    		<img src="cinqueterre.jpg" class="img-circle" alt="Cinque Terre" >
+    		</div>
+    		<div class="col-md-11">
+    		hello
+    		</div>
+    		
+    	</div>
 	</div>
 	
 </div>
 
-<div class="center-block">
-    <div class="card" style="width: 500px; height: 350px">
-   		<div class="front" style="padding: 10px;">
-       		<img id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
-    	</div>
-    	<div class="back" style="padding: 10px;">
-        	<div>
-     dfdf
-        	</div>
-    	</div>
-	</div>
-</div>
 
 
 

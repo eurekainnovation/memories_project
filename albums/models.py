@@ -4,7 +4,7 @@ import datetime
 from django.template.defaultfilters import slugify
 
 class UserProfile(models.Model):
-	user = models.OneToOneField(User)
+	user = models.OneToOneField(User, related_name='profile')
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 	
 	def __unicode__(self):

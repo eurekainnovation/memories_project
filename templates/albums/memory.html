@@ -12,29 +12,39 @@
     	});
 	</script>
 	
+	<script>
+	$(function() {
+	var $picHeight = $(.pic).height();
+	var $picWidth = $(.pic).width();
+  		$(".card").width(picWidth).height(picHeight);
+	});
+	</script>
 	<style>
 
-	
-	.card {
-	width:100%;
-	height:300px;
-	}
-	
 	#test {
     overflow: scroll;
     height:90vh;
     
 }
 
-	.back {
-background-color: #f2f2f2;
-}
 
 .carousel img {
 
   min-width: 100%;
   height: 500px;
   max-height: 500px;
+
+}
+
+.card {
+height: 300px;
+}
+
+.back {
+padding:50px !important;
+background-color:#f2f2f2;
+    overflow: scroll;
+    height: 70%;
 
 }
 
@@ -58,6 +68,21 @@ width:100%;
    margin: 0 !important;
    
 }
+
+#comment {
+
+width:100% !important;
+}
+
+#message {
+
+padding-top:15px !important;
+}
+
+#thread {
+margin-bottom:15px !important;
+}
+
 	
 	</style>
 
@@ -104,6 +129,7 @@ width:100%;
   </a>
 </div>
 
+
 	{% if photos %}
 	<div class = "row" id="fi">
 		{% for photo in photos %}
@@ -116,10 +142,27 @@ width:100%;
 	  			<div class="back" style="padding: 10px;">
         			<div style="height: 100%">
         				{% for message in comments %}
-        				{% if message.photo =  photo %}		
-           				<p>{{message.usr.username}}: {{message.comment}}</p>
+        				{% if message.photo =  photo %}	
+        				<div class="row" id="thread">	
+        					<div class="col-xs-2">
+        						 <img class="img-circle center-block" src=" /media/{{message.usr.profile.picture}}" alt="Cinque Terre" width="50" height="50">
+        					</div>
+        					<div class="col-xs-10 id="message">
+        						<p>{{message.usr.username}}: {{message.comment}}</p>
+        					</div>
+           				 </div>
            				 {% endif %}
            				 {% endfor %}
+           				 <div class="row">
+           				 <form class ="form-inline" action="" method="post">
+           				 	<div class="form-group col-xs-10">
+                        		<input id="comment" style class="form-control" name="username" placeholder="Comment" type="text">
+                    		</div>
+                    		
+                    		<button type="submit" class="btn btn-default">Post</button>
+                    		
+						 </form>                    		
+           				 </div>
         			</div>
     			</div>
 				</div>
@@ -128,6 +171,7 @@ width:100%;
 		{% endfor %}
     </div>
     {% endif %}
+    
 
     	<!--
 		<div id = "cover" class="col-md-5">
