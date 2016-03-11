@@ -1,99 +1,48 @@
 {% extends 'albums/base.html' %}
 {% block head_block %}
+{% load staticfiles %}
 <style>
-.carousel img {
-
-  min-width: 100%;
-
-}
-</style>
-
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
-	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
-	<script>
-		$(function() {
-        	$(".grid-container").flip({
-           		trigger: 'click'
-        	});
-    	});
-	</script>
-	
-	<style>
-
-	
-.card {
-
-
-}
-
-	
-	.chi {
-	width:100px;
-	}
-	
-	#test {
-    overflow: scroll;
-    height:90vh;
-    
-}
-
-	.back {
-background-color: #f2f2f2;
-}
-
-.carousel img {
-
-  min-width: 100%;
-  height: 500px;
-  max-height: 500px;
-
-}
-
-#fi {
-margin-top:20px;
-}
-
-#cover {
-margin-top:100px;
-border-right: solid;
-}
 
 
 
-.nopadding {
+	.nopadding {
    padding: 0 !important;
    margin: 0 !important;
-   
 }
+
 	
 	</style>
 {% endblock %}
 
 {% block body_block %}
 
-
+<div class="container-fluid">
 <div class = "row" id="fi">
 
-	<div class="col-lg-4 nopadding">
+	<div class="col-md-4 nopadding">
 		<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
 	</div>
 
-	<div id = "hi" class="col-lg-4 nopadding">
+	<div id = "hi" class="col-md-4 nopadding">
 		<img class="img-responsive" id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
 	</div>
 
-	<div id = "hi" class="col-lg-4 nopadding">
-		<div class="row nopadding">
-    		<div class="col-md-1">
-    		<img src="cinqueterre.jpg" class="img-circle" alt="Cinque Terre" >
-    		</div>
-    		<div class="col-md-11">
-    		hello
-    		</div>
-    		
-    	</div>
+	<div class="col-md-4 nopadding">
+		<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
 	</div>
 	
+	<div class="col-md-4 nopadding">
+		<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
+	</div>
+
+	<div id = "hi" class="col-md-4 nopadding">
+		<img class="img-responsive" id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
+	</div>
+
+	<div id ="hi" class="col-md-4 nopadding">
+		<img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" />
+	</div>
+	</div>
 </div>
 
 

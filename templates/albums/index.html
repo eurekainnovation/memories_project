@@ -1,6 +1,6 @@
 
 {% extends 'albums/base.html' %}
-
+{% load staticfiles %}
 {% block title %}hello{% endblock %}
 
 {% block body_block %}
@@ -14,10 +14,9 @@
 <br>
 
 		{% if gallery %}
-		<div class="col-md-10 col-md-offset-2">
             <div class="row">
                 {% for i in gallery %}
-                <div class="col-md-4">
+                <div class="col-md-12">
                 	<div class="well">
                     	<a href = "{{ i.albums.slug }}"><img class="thumbnail img-responsive" src="../media/{{ i.albums.cover_picture }}" alt="Picture of Rango" /></a>
                 	</div>
@@ -25,82 +24,15 @@
                 <!-- Following line changed to add an HTML hyperlink -->
                 
                 {% endfor %}
+                <div class="col-md-12">
+                	<div class="well">
+                    	<a href = "/albums/new/"><img class="img-responsive" id ="pic" src="{% static "images/newalbums.png" %}" /></a>
+                	</div>
+            	</div>
             </div>
-        </div>
        {% else %}
             <strong>There are no categories present.</strong>
        {% endif %}
        
-       
-       
- <div class="container">
-    <div class="row">
-        <div class="text-center">
-            <h1>{{ user.username }}'s Albums</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h9.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h8.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h4.jpg" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h7.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h3.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h6.jpg" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h1.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h2.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" 
-                        src="http://www.prepbootstrap.com/Content/images/shared/houses/h5.jpg" />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-		
-<a href="/albums/new/">New Album</a>
     {% endblock %}
     

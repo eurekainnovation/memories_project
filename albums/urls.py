@@ -20,6 +20,8 @@ urlpatterns = patterns('',
         url(r'^login/$', views.user_login, name='login'),
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^test/$', views.test, name='test'),
+        url(r'^upload/$', views.upload_photo, name='upload'),
         url(r'^(?P<album_name_slug>[\w\-]+)/$', views.memory, name='memory'),
+        
        
 )

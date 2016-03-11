@@ -1,6 +1,6 @@
 
 {% extends 'albums/base.html' %}
-
+{% load staticfiles %}
 {% block head_block %}
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
@@ -82,6 +82,8 @@ padding-top:15px !important;
 #thread {
 margin-bottom:15px !important;
 }
+
+
 
 	
 	</style>
@@ -169,10 +171,41 @@ margin-bottom:15px !important;
 			</div>
 			{% endif %}
 		{% endfor %}
+			<div class="col-lg-4 nopadding">
+				<a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" /></a>
+			</div>
     </div>
     {% endif %}
     
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+        	<form action="{% url 'upload' %}" method="post" id="file_upload_form" enctype="multipart/form-data" role="form">
+        	{% csrf_token %}
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Upload Photo</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="messages">
+                    </div>
+            {% for hidden in upload_form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
 
+            {% for field in upload_form.visible_fields %}
+                {{ field }}
+            {% endfor %}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     	<!--
 		<div id = "cover" class="col-md-5">
 		    <div class="text-center">

@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from albums.forms import UserForm, UserProfileForm
+from django.http import HttpResponse, HttpResponseRedirect
+from albums.forms import UserForm, UserProfileForm, FileUploadForm
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from datetime import datetime
@@ -148,6 +147,7 @@ def user_login(request):
 		# blank dictionary object...
 		return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form})
 
+
 	
 @login_required
 def user_logout(request):
@@ -194,6 +194,10 @@ def memory(request, album_name_slug):
 		comment_list = Message.objects.filter(photo=photo_list)
 		context_dict['comments'] = comment_list
 		
+		file_upload_form = FileUploadForm()
+		context_dict['upload_form'] = file_upload_form
+
+		
 	except Album.DoesNotExist:
 		pass
 	
@@ -202,4 +206,22 @@ def memory(request, album_name_slug):
 		
 def test(request):
 	return render(request, 'albums/test.html', {})
+
+def upload_photo(request):
+
+    if request.method == 'POST':
+    	likes = 0
+
+        form = FileUploadForm(request.POST, request.FILES)
+
+        if form.is_valid():
+			newphoto = Photo(photo = request.FILES['photo'], album = request.POST['album'])
+			newphoto.save()
+			print('is valid')
+        else :
+			print('form not valid')
 		
+    return HttpResponse(likes)
+	
+	
+

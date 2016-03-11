@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from albums.models import UserProfile
+from albums.models import Photo
+from albums.models import Album
 
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget=forms.PasswordInput())
@@ -25,3 +27,15 @@ class UserProfileForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(UserProfileForm, self).__init__(*args, **kwargs)
 		self.fields['picture'].error_messages = {'required': 'Picture is required'}
+
+
+class FileUploadForm(forms.ModelForm):
+
+	photo = forms.ImageField(required=True)
+	album = forms.ModelChoiceField(Album.objects.all())
+
+	class Meta:
+		model = Photo
+		fields = ('photo',)
+	
+	
