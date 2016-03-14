@@ -176,11 +176,12 @@ margin-bottom:15px !important;
 			</div>
 			{% endif %}
 		{% endfor %}
+		    {% endif %}
 			<div class="col-lg-4 nopadding">
 				<a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" /></a>
 			</div>
     </div>
-    {% endif %}
+
     
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog">
@@ -197,10 +198,12 @@ margin-bottom:15px !important;
             {% for hidden in upload_form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
-
+			
+			
             {% for field in upload_form.visible_fields %}
                 {{ field }}
             {% endfor %}
+            
 
                 </div>
                 <div class="modal-footer">

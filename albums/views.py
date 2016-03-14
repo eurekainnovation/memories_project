@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
 from albums.forms import UserForm, UserProfileForm, FileUploadForm
 from django.contrib.auth import authenticate, login
@@ -183,6 +184,7 @@ def memory(request, album_name_slug):
 				print(i.albums.title)
 				context_dict['album'] = i.albums
 				memory = i.albums
+				print(memory.id)
 				
 		context_dict['covers'] = cover_list
 		
@@ -194,7 +196,10 @@ def memory(request, album_name_slug):
 		comment_list = Message.objects.filter(photo=photo_list)
 		context_dict['comments'] = comment_list
 		
-		file_upload_form = FileUploadForm()
+		
+		
+		file_upload_form = FileUploadForm(initial={'albumID': memory.id})
+
 		context_dict['upload_form'] = file_upload_form
 
 		
@@ -213,11 +218,14 @@ def upload_photo(request):
     	likes = 0
 
         form = FileUploadForm(request.POST, request.FILES)
+        id =  request.POST['albumID']
+        albumOb = Album.objects.get(pk=id)
 
         if form.is_valid():
-			newphoto = Photo(photo = request.FILES['photo'], album = request.POST['album'])
+			newphoto = Photo(photo = request.FILES['photo'], album = albumOb)
 			newphoto.save()
 			print('is valid')
+
         else :
 			print('form not valid')
 		

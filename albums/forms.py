@@ -32,10 +32,15 @@ class UserProfileForm(forms.ModelForm):
 class FileUploadForm(forms.ModelForm):
 
 	photo = forms.ImageField(required=True)
-	album = forms.ModelChoiceField(Album.objects.all())
+	albumID = forms.IntegerField(required=True,initial=0)
+	
+	def getAlbumID():
+		print self.albumId
 
 	class Meta:
 		model = Photo
 		fields = ('photo',)
+		
+	
 	
 	
