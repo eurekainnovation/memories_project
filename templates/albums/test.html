@@ -10,8 +10,40 @@
    margin: 0 !important;
 }
 
+			.card-grid .front {
+    background-color: #eee;
+}
+
+.card-grid .back {
+background-color: #333;
+color: white;
+
+}
+
+.card-grid {
+    width: 100%;
+
+    margin: 0px;
+    display: inline-block;
+}
+
+.front  {position: relative;}
+.back       {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 	
 	</style>
+	
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
+		<script>
+		$(function() {
+        	$(".card-grid").flip({
+           		trigger: 'click'
+        	});
+        $(".noflips").click(function(event) {
+    		event.stopPropagation();
+			});
+    	});
+	</script>
 {% endblock %}
 
 {% block body_block %}
@@ -43,6 +75,20 @@
 		<img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" />
 	</div>
 	</div>
+	
+	<div id ="grid-container"> 
+		<div id ="hi" class="col-md-4 nopadding">
+		<div class="card-grid">
+			<div class="front">
+			<img class="img-responsive" id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
+			</div>
+			<div class = "back">
+				Back
+			</div>
+		</div>
+		</div>
+		
+	
 </div>
 
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from albums.forms import UserForm, UserProfileForm, FileUploadForm, NewAlbumForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -20,7 +21,7 @@ from albums.models import UserProfile
 def index(request):
 	print(request.user.username)
 	#List of gallery objects
-	gallery_list = Gallery.objects.filter(usr__id = request.user.id )
+	gallery_list = Gallery.objects.filter(usr = request.user )
 
 	context_dict = {'gallery': gallery_list}
 	
@@ -182,7 +183,9 @@ def memory(request, album_name_slug):
 				print(i.albums.title)
 				context_dict['album'] = i.albums
 				memory = i.albums
-				print(memory.id)
+
+		shared_with = Gallery.objects.filter(albums=memory)
+		context_dict['shared'] = shared_with
 				
 		context_dict['covers'] = cover_list
 		
@@ -213,7 +216,6 @@ def test(request):
 def upload_photo(request):
 
     if request.method == 'POST':
-    	likes = 0
 
         form = FileUploadForm(request.POST, request.FILES)
         id =  request.POST['albumID']
@@ -226,8 +228,8 @@ def upload_photo(request):
 
         else :
 			print('form not valid')
-		
-    return HttpResponse(likes)
+
+    return HttpResponse('success')
 	
 @login_required
 def new(request):
@@ -236,16 +238,34 @@ def new(request):
 		form = NewAlbumForm(request.POST, request.FILES)
 		
 		if form.is_valid():
-			print('is valid')
+			#Create a new album with the title and photo from the submitted form
 			newAlbum = Album(title = request.POST['title'], cover_picture = request.FILES['cover'])
 			newAlbum.save()
 			
-			albumOb = Album.objects.get(pk=newAlbum.id)
+			#We also need to create a new entry in Gallery to associate the user with the new album
 			userOb = request.user
-			newGallery = Gallery(usr = userOb, albums = albumOb)
+			newGallery = Gallery(usr = userOb, albums = newAlbum)
 			newGallery.save()
+			
 		else:
 			print('form not valid')
 
-	return render(request, 'albums/new.html')
+	return HttpResponseRedirect(reverse('index', args=(), kwargs={}))
+
+@login_required
+def post_comment(request):
+
+	if request.method == 'POST':
+		#get the photo corresponding to one that the comment was submitted for
+		id =  request.POST['photoID']
+		postedComment =  request.POST['comment']
+		
+		#need to do some form validation here because we aren't using a django form since its different for every photo in the album
+		photoOb = Photo.objects.get(pk=id)
+		userOb = request.user
+		
+		newComment = Message(photo=photoOb, comment = postedComment, usr = userOb)
+		newComment.save()
+				
+	return HttpResponse('comment success')
 

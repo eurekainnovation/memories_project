@@ -21,6 +21,7 @@ urlpatterns = patterns('',
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^test/$', views.test, name='test'),
         url(r'^upload/$', views.upload_photo, name='upload'),
+        url(r'^comment/$', views.post_comment, name='comment'),
         url(r'^(?P<album_name_slug>[\w\-]+)/$', views.memory, name='memory'),
         
        
