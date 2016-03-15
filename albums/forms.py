@@ -32,15 +32,19 @@ class UserProfileForm(forms.ModelForm):
 class FileUploadForm(forms.ModelForm):
 
 	photo = forms.ImageField(required=True)
-	albumID = forms.IntegerField(required=True,initial=0)
-	
-	def getAlbumID():
-		print self.albumId
+	albumID = forms.IntegerField(widget=forms.HiddenInput(),required=True)
 
 	class Meta:
 		model = Photo
 		fields = ('photo',)
 		
 	
+class NewAlbumForm(forms.ModelForm):
+
+	title =forms.CharField(max_length=128, help_text="Please enter the title of the album")
+	cover = forms.ImageField(required=True)
 	
+	class Meta:
+		model = Album
+		fields = ('cover', 'title',)
 	

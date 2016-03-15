@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'memories_project.wsgi.application'
 
 LOGIN_URL = '/albums/login/'
 
-
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 

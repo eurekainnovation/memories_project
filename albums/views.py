@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
-from albums.forms import UserForm, UserProfileForm, FileUploadForm
+from albums.forms import UserForm, UserProfileForm, FileUploadForm, NewAlbumForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -12,6 +12,7 @@ from albums.models import Album
 from albums.models import Message
 from albums.models import Photo
 from albums.models import Gallery
+from albums.models import UserProfile
 
 
 
@@ -48,16 +49,13 @@ def index(request):
 		
 	context_dict['visits'] = visits
 	
+	new_album_form = NewAlbumForm()
+	context_dict['new_album_form'] = new_album_form
+	
 	response = render(request, 'albums/index.html', context_dict)
 		
 	return response
 	
-	    	
-	
-@login_required
-def new(request):
-
-	return render(request, 'albums/new.html')
 	
 def register(request):
 	
@@ -231,5 +229,23 @@ def upload_photo(request):
 		
     return HttpResponse(likes)
 	
-	
+@login_required
+def new(request):
+
+	if request.method == 'POST':
+		form = NewAlbumForm(request.POST, request.FILES)
+		
+		if form.is_valid():
+			print('is valid')
+			newAlbum = Album(title = request.POST['title'], cover_picture = request.FILES['cover'])
+			newAlbum.save()
+			
+			albumOb = Album.objects.get(pk=newAlbum.id)
+			userOb = request.user
+			newGallery = Gallery(usr = userOb, albums = albumOb)
+			newGallery.save()
+		else:
+			print('form not valid')
+
+	return render(request, 'albums/new.html')
 
