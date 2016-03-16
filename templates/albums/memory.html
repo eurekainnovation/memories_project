@@ -159,10 +159,13 @@ margin-bottom:15px !important;
 {% block body_block %}
 
 
+ 
+ 
 <div id="carousel-example" class="carousel slide" data-interval="false">
 	<ol class="carousel-indicators">
+		 <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
  	 	{% for cover in covers %}
-		<li data-target="#carousel-example" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+		<li data-target="#carousel-example" data-slide-to="{{ forloop.counter0 }}"></li>
 		{% endfor %}
   </ol>
 
@@ -172,7 +175,7 @@ margin-bottom:15px !important;
       <a href="#"><img id="pic" src="/media/{{ album.cover_picture }}" alt="cover photo" /></a>
       <div class="carousel-caption">
         <h2>{{ album.title }}</h2>
-        <h3>21st February 2014</h3>
+        <h3>{{ album.date|date:"d M Y" }}</h3>
       </div>
     </div>
     
@@ -181,8 +184,8 @@ margin-bottom:15px !important;
     <div class="item">
       <a href="#"><img src="/media/{{ cover.cover_picture }}" /></a>
       <div class="carousel-caption">
-        <h3>{{ cover.title }}</h3>
-        <p>Just Kitten Around</p>
+        <h2>{{ cover.title }}</h2>
+        <h3>{{ cover.date|date:"d M Y" }}</h3>
       </div>
     </div>
     
@@ -192,7 +195,7 @@ margin-bottom:15px !important;
   <a class="left carousel-control" href="#carousel-example" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
-  <a class="right carousel-control" href="#carousel-example" data-slide="next">
+  <a class="right carousel-control" href="#carousel-example"  data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>

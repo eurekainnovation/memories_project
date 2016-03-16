@@ -174,15 +174,15 @@ def memory(request, album_name_slug):
 		gallery_list = Gallery.objects.filter(usr__id = request.user.id )
 		
 		cover_list=()
-
-		
+	
 		#Within the albums returned, see if any are by the name of the album slug parameter and get cover photos
 		for i in gallery_list:
-			cover_list = cover_list + (i.albums,)
+			
 			if i.albums.slug == album_name_slug:
-				print(i.albums.title)
 				context_dict['album'] = i.albums
 				memory = i.albums
+			else:
+				cover_list = cover_list + (i.albums,)
 
 		shared_with = Gallery.objects.filter(albums=memory)
 		context_dict['shared'] = shared_with

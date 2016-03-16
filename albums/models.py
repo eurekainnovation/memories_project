@@ -14,7 +14,8 @@ class UserProfile(models.Model):
 class Album(models.Model):
     title = models.CharField(max_length=128)
     cover_picture = models.ImageField(upload_to='cover_images', blank=True)
-    slug = models.SlugField() 
+    slug = models.SlugField()
+    date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     
     def save(self, *args, **kwargs):
             # Uncomment if you don't want the slug to change every time the name changes

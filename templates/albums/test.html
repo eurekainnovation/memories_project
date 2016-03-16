@@ -1,55 +1,64 @@
-{% extends 'albums/base.html' %}
-{% block head_block %}
-{% load staticfiles %}
+<html>
+
+<head>
+
 <style>
-
-
-
 	.nopadding {
    padding: 0 !important;
    margin: 0 !important;
 }
 
-			.card-grid .front {
+			.card .front {
     background-color: #eee;
 }
 
-.card-grid .back {
-background-color: #333;
+.card .back {
+background-color: black;
 color: white;
 
 }
 
-.card-grid {
-    width: 100%;
+.card {
+height:100%;
 
-    margin: 0px;
-    display: inline-block;
 }
 
-.front  {position: relative;}
-.back       {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
-	
-	</style>
-	
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
+
+
+
+</style>
+
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="description" content="">
+    	<meta name="author" content="">
+    	<link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		
+		    	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    	
+    	
+    		<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js" ></script>
-		<script>
+	<script>
 		$(function() {
-        	$(".card-grid").flip({
+        	$(".card").flip({
            		trigger: 'click'
         	});
-        $(".noflips").click(function(event) {
-    		event.stopPropagation();
-			});
+
     	});
 	</script>
-{% endblock %}
+</head>
 
-{% block body_block %}
+<body>
 
 <div class="container-fluid">
-<div class = "row" id="fi">
+<div class = "row">
 
 	<div class="col-md-4 nopadding">
 		<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
@@ -63,36 +72,34 @@ color: white;
 		<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
 	</div>
 	
-	<div class="col-md-4 nopadding">
-		<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
-	</div>
-
-	<div id = "hi" class="col-md-4 nopadding">
-		<img class="img-responsive" id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
-	</div>
-
-	<div id ="hi" class="col-md-4 nopadding">
-		<img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" />
-	</div>
-	</div>
+</div>
 	
-	<div id ="grid-container"> 
-		<div id ="hi" class="col-md-4 nopadding">
-		<div class="card-grid">
+<div class = "row">
+
+	<div class="col-md-4 nopadding">
+		<div class="card">
 			<div class="front">
-			<img class="img-responsive" id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
+				<img class="img-responsive" src="http://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-nevada-fall-1200x800.jpg" />
 			</div>
 			<div class = "back">
 				Back
 			</div>
 		</div>
-		</div>
+	</div>
+	
+		<div id = "hi" class="col-md-4 nopadding">
+		<img class="img-responsive" id ="pic" src="http://blogs.nybg.org/plant-talk/wp-content/uploads/2014/10/1014-allee-fall-1200x800.jpg" />
+	</div>
+</div
+	
+
+		
 		
 	
 </div>
 
 
+</body>
 
+</html>
 
-
-{% endblock %}
