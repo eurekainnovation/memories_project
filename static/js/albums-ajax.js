@@ -1,13 +1,13 @@
 $(document).ready(function() {
+$(".form-control").keyup(function(event){
+	
 
 });
 
-$('form').live('submit', function(){
-  $.post($(this).attr('action'), $(this).serialize(), function(response){
-		// do something here on success
-  },'json');
-  return false;
+
 });
+
+
 
 function postmsg(form,val,photo,url) { 
 
