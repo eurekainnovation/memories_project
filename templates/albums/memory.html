@@ -233,7 +233,7 @@ margin-bottom:15px !important;
            				 <div class="noflips">
            				 <form class ="form-inline" id="message_post" target="hidden-form" action="{% url 'comment' %}" method="post">{% csrf_token %}
            				 	<div class="form-group col-xs-10">
-                        		<input id="comment" style class="form-control" name="comment" placeholder="Comment" type="text">
+                        		<input id="comment" onkeydown="if (event.keyCode == 13) {postmsg(this.form,{{ photo.id }},'/media/{{artist_pic}}','{% url 'comment' %}')}" style class="form-control" name="comment" placeholder="Comment" type="text">
                         		<input id="photoID" style class="form-control" name="photoID" value="{{ photo.id }}" type="hidden" >
                     		</div>
                     		
