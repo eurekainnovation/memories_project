@@ -289,14 +289,15 @@ margin-bottom:15px !important;
 <div class="modal fade" id="addModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
-        	<form action="{% url 'upload' %}" method="post" id="file_upload_form" enctype="multipart/form-data" role="form">
+        	<form action="{% url 'share' %}" method="post" id="add_collaborator_form">
         	{% csrf_token %}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title">Add Collaborators</h4>
                 </div>
                 <div class="modal-body">
-                
+					<input id="collaborator" style class="form-control" name="collaborator" placeholder="Comment" type="text">
+					<input id="albumID" style class="form-control" name="albumID" value="{{ album.id }}" type="hidden" >
                     <div id="messages">
                     </div>
         

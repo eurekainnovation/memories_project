@@ -270,4 +270,24 @@ def post_comment(request):
 		newComment.save()
 				
 	return HttpResponse('comment success')
+'''
+@login_required
+def add_collaborator(request):
 
+	if request.method == 'POST':
+		#get the album and collaborator
+		new_collaborator =  request.POST['collaborator']
+		print new_collaborator
+		
+		new_collaborator_obj = UserProfile.objects.filter(user=new_collaborator)
+		#print new_collaborator_obj
+		#id =  request.POST['albumID']
+		#print id
+                #albumOb = Album.objects.get(pk=id)
+                #print albumOb
+
+		#newC = Gallery(usr=new_collaborator_obj, album=albumOb, contributor=True)
+		#newC.save()
+	
+	return HttpResponse('guy/gal added')
+'''

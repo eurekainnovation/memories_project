@@ -22,6 +22,7 @@ urlpatterns = patterns('',
         url(r'^test/$', views.test, name='test'),
         url(r'^upload/$', views.upload_photo, name='upload'),
         url(r'^comment/$', views.post_comment, name='comment'),
+        url(r'^share/$', views.add_collaborator, name='share'),
         url(r'^(?P<album_name_slug>[\w\-]+)/$', views.memory, name='memory'),
         
        
