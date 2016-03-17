@@ -196,12 +196,14 @@ def memory(request, album_name_slug):
 		#Get all the comments corresponding to each photo
 		comment_list = Message.objects.filter(photo=photo_list)
 		context_dict['comments'] = comment_list
-		
-		
-		
+
+		userprofile = UserProfile.objects.get(user=request.user)
+		profilepic = userprofile.picture
+               
 		file_upload_form = FileUploadForm(initial={'albumID': memory.id})
 
 		context_dict['upload_form'] = file_upload_form
+		context_dict['artist_pic'] = profilepic
 
 		
 	except Album.DoesNotExist:

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Album</title>
+</head>
+<body>
+<h1>{{ album_title }}</h1>
+
+All the cool photos are :
+
+{% for key, value in data %}
+    <tr>
+        <td> {{ key }}: </td> <td> {{ value }} </td>
+    </tr>
+{% endfor %}
+
+
+<strong>No photos currently in album.</strong>
+
+The specified album {{ album_name }} does not exist!
+
+</body>
+</html>
