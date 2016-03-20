@@ -1,9 +1,19 @@
 $(document).ready(function() {
-$(".form-control").keyup(function(event){
+
+$('#collaborator').keyup(function(){
+	var query;
+	query = $(this).val();
+	$.get('/albums/suggest_users/', {suggestion:query}, function(data){	
+
+	$('#collaborator').autocomplete({
+	source:data
 	
+	});
+	$('#testing').html(data);
 
+	
+	});
 });
-
 
 });
 

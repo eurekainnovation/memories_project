@@ -15,6 +15,7 @@ from albums.models import Photo
 from albums.models import Gallery
 from albums.models import UserProfile
 
+import json
 
 
 @login_required
@@ -282,7 +283,8 @@ def add_collaborator(request):
 		#userprofile = UserProfile.objects.get(user=request.user)
 		new_collaborator_obj = UserProfile.objects.get(user__username=new_collaborator)
 		print new_collaborator_obj.user
-		
+		print "Suggested Users:"
+		print get_usr_list(3, 's')
 		id =  request.POST['albumID']
 		print id
                 albumOb = Album.objects.get(pk=id)
@@ -292,4 +294,34 @@ def add_collaborator(request):
 		newC.save()
 	
 	return HttpResponse('guy/gal added')
+
+def suggest_users(request):
+        print "HELLO!!!!"
+        usr_names = []
+        sw = ''
+
+        if request.method == 'GET':
+                sw = request.GET['suggestion']
+
+        usr_names = get_usr_list(5, sw)
+        print "Suggested Users (AJAX):"
+	print usr_names
+
+        return HttpResponse(usr_names)#HttpResponse(simplejson.dumps(usr_names), mimetype='application/json')
+
+
+
+def get_usr_list(max_results=0, sw=''):
+        usr_list = []
+        usr_names = []
+        if sw:
+                usr_list = UserProfile.objects.filter(user__username__istartswith=sw) #user__username__istartswith
+        if max_results > 0:
+                if usr_list.count() > max_results:
+                        usr_list = usr_list[:max_results]
+        for r in usr_list:
+                usr_names.append(r.user.username) #{'label':r.user.username}                       
+        
+        return usr_names
+
 
