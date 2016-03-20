@@ -1,23 +1,13 @@
-$(document).ready(function() {
 
-$('#collaborator').keyup(function(){
-	var query;
-	query = $(this).val();
-	$.get('/albums/suggest_users/', {suggestion:query}, function(data){	
+$("#collaborator").autocomplete({
+                source:'{% url suggest_users %}',
+                minLength: 1,
+                select: function( event, ui ) {
+                    $("#collaborator").val(ui.item.label);
+                    
+                }
 
-	$('#collaborator').autocomplete({
-	source:data
-	
-	});
-	$('#testing').html(data);
-
-	
-	});
-});
-
-});
-
-
+            });
 
 function postmsg(form,val,photo,url) { 
 

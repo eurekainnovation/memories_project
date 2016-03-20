@@ -298,6 +298,7 @@ def add_collaborator(request):
 def suggest_users(request):
         print "HELLO!!!!"
         usr_names = []
+        test = []
         sw = ''
 
         if request.method == 'GET':
@@ -307,7 +308,13 @@ def suggest_users(request):
         print "Suggested Users (AJAX):"
 	print usr_names
 
-        return HttpResponse(usr_names)#HttpResponse(simplejson.dumps(usr_names), mimetype='application/json')
+	data = {'label': "7510-Synaptic", 'value': 7510,'label': "7512-Allied", 'value': 7512 }
+	test.append({'label': "7510-Synaptic",'value': 7510})
+	test.append({'label': "7512-Synaptic",'value': 7512})
+
+	print data #simplejson.dumps(data), mimetype='application/json'
+
+        return HttpResponse(simplejson.dumps(test), mimetype='application/json')
 
 
 
@@ -320,7 +327,7 @@ def get_usr_list(max_results=0, sw=''):
                 if usr_list.count() > max_results:
                         usr_list = usr_list[:max_results]
         for r in usr_list:
-                usr_names.append(r.user.username) #{'label':r.user.username}                       
+                usr_names.append({'label':r.user.username} ) #{'label':r.user.username}                       
         
         return usr_names
 
