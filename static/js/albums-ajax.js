@@ -1,13 +1,45 @@
+$(document).ready(function() {
 
-$("#collaborator").autocomplete({
-                source:'{% url suggest_users %}',
-                minLength: 1,
-                select: function( event, ui ) {
-                    $("#collaborator").val(ui.item.label);
-                    
-                }
+$('#collaborator').keyup(function(){
 
-            });
+	var query;
+	query = $(this).val();
+	$.get('/albums/suggest_users/', {suggestion:query}, function(data){	
+	
+	var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+	
+	$('#collaborator').autocomplete({source:availableTags});	
+	$('#testing').html(availableTags);
+
+	
+});
+
+});
+});
+
 
 function postmsg(form,val,photo,url) { 
 

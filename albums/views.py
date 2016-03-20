@@ -312,9 +312,9 @@ def suggest_users(request):
 	test.append({'label': "7510-Synaptic",'value': 7510})
 	test.append({'label': "7512-Synaptic",'value': 7512})
 
-	print data #simplejson.dumps(data), mimetype='application/json'
+	print test #simplejson.dumps(data), mimetype='application/json'
 
-        return HttpResponse(simplejson.dumps(test), mimetype='application/json')
+        return HttpResponse(test)#HttpResponse(simplejson.dumps(test), mimetype='application/json')
 
 
 
