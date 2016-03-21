@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+$('#save-add-user').click(function(){
+//$('#addModal').modal.hide();
+//$('.modal-backdrop').hide();
+});
 
 $('#collaborator').keyup(function(){
 
@@ -14,7 +18,7 @@ $('#collaborator').keyup(function(){
       "Scheme"
     ];
 	
-	$('#collaborator').autocomplete({source:data});	
+	$('#collaborator').autocomplete({delay: 0, source:data});	
 	//$('#testing').html(availableTags);
 
 	

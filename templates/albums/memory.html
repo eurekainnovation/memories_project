@@ -267,7 +267,7 @@ margin-bottom:15px !important;
         </div>
     </div>
 </div>
-<div class="modal fade" id="addModal">
+<div class="modal fade" id="addModal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
         	<form action="{% url 'share' %}" method="post" id="add_collaborator_form" target="hidden-form">
@@ -279,14 +279,14 @@ margin-bottom:15px !important;
 				<div class="modal-body">
 					<div class="ui-widget">
 					<label for="collaborator">Add User: </label>
-					<input id="collaborator" style class="form-control" name="collaborator" placeholder="Search User" type="text">
+					<input id="collaborator" autocomplete="off" style class="form-control" name="collaborator" placeholder="Search User" type="text">
 					<p id="testing">
 					</div>
 					<input id="albumID" style class="form-control" name="albumID" value="{{ album.id }}" type="hidden" >
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" >Save</button>
+                    <button type="submit" class="btn btn-primary" id="save-add-user">Save</button>
                 </div>
             </form>
         </div>
