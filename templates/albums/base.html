@@ -8,19 +8,15 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<meta name="description" content="">
     	<meta name="author" content="">
-    	<link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
     	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		
 
-		<script src="{% static "js/albums-ajax.js" %}"></script>
-		
-		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<title>Stampless - {% block title %}Best Memories{% endblock %}</title>
-		{% block head_block %}{% endblock %}
-		<script src="{% static "js/albums-jquery.js" %}"></script>
     	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
+        <title>Memories{% block title %}{% endblock %}</title>
+        {% block head_block %}{% endblock %}
 
     </head>
 
@@ -71,9 +67,6 @@
 	
         {% block body_block %}
         
-        {% block modal_block %}
-        
-        {% endblock %}
         
         {% endblock %}
     </body>

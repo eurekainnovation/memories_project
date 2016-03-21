@@ -3,10 +3,14 @@
 $(document).ready( function() {
     
     
-$("p").click( function(event) {
-msgstr = $("#msg").html()
-        msgstr = msgstr + "o"
-        $("#msg").html(msgstr)
- });
+		$(function() {
+        	$(".card").flip({
+           		trigger: 'click'
+        	});
+			document.getElementById('post_btn').focus();
+        $(".noflips").click(function(event) {
+    		event.stopPropagation();
+			});
+    	});
 
 });
