@@ -7,9 +7,6 @@
 
 {% block body_block %}
 
-	{% if registered %}
-		<p>Registration complete, sign in with registered details above</p>
-	{% endif %}
 	
 <div class = "full">	
 <div class="container">
@@ -17,9 +14,23 @@
 	<br><br>
     <div class="row">
     
-            <div class="col-md-5">
+        <div class="col-md-5">
         	<h2>Sign up to start sharing your most important memories with your most important people! </h2>
+                    
+            <div class="col-md-12" id="success">
+                {% if registered %}
+                <div class="alert alert-success">
+                    <strong><span class="glyphicon glyphicon-ok"></span> Registration complete! Sign in with details above.</strong>
+                </div>
+                {% endif %}
+                {% if failed %}
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-remove"></span><strong> Registration failed! Please check all inputs and try again.</strong>
+                </div>
+                {% endif %}
+            </div>
         </div>
+
 		<form id="user_form" method="post" action="/albums/signup/" enctype="multipart/form-data">
         {% csrf_token %}
         	<div class="col-md-5 col-md-offset-1">
@@ -60,9 +71,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputPhoto">{{user_form.last_name.label}}</label>
+                    <label for="InputPhoto">{{profile_form.picture.label}}</label>
                     <div class="input-group">
-                        <input type="file" class="form-control" id="profile_pic" name="profile_pic" placeholder="Upload Photo" required>
+                        <input type="file" class="form-control" id="picture" name="picture" placeholder="Upload Photo">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>      

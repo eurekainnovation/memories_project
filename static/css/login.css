@@ -16,3 +16,7 @@ h1 {
  	padding:40px;
  	background-color: rgba(0, 0, 0, 0.1);
 }
+
+#success {
+	margin-top: 80px;
+}

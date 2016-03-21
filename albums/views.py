@@ -64,6 +64,7 @@ def register(request):
 	#boolean value for telling the template whether the registration was successfull
 	#Initialise as false and the following will adjust it accordingly
 	registered = False
+	failed = False
 	
 	#If it's a HTTP POST, we're interested in processing form data.
 	if request.method == 'POST':
@@ -87,6 +88,8 @@ def register(request):
 			
 			if 'picture' in request.FILES:
 				profile.picture = request.FILES['picture']
+
+
 				
 			# Now save the UserProfile model instance
 			profile.save()
@@ -96,13 +99,14 @@ def register(request):
 		# Invalid forms, print mistakes to the terminal
 		else:
 			print user_form.errors, profile_form.errors
+			failed = True
 		
 	#Not a HTTP POST so render form using 2 modelForm instances			
 	else:
 		user_form = UserForm()
 		profile_form = UserProfileForm()
 		
-	return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered}) 
+	return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered, 'failed': failed}) 
 	
 	
 def user_login(request):
