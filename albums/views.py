@@ -171,13 +171,6 @@ def user_logout(request):
 def memory(request, album_name_slug):
 	context_dict = {}
 	
-	if request.session.get('visits'):
-		count = request.session.get('visits')
-		
-	else:
-		count = 0
-	
-	context_dict['visits'] = count
 	
 	try:
 		# Search gallery for all the albums corresponding to the logged in user
@@ -221,9 +214,6 @@ def memory(request, album_name_slug):
 	
 	return render(request, 'albums/memory.html', context_dict)
 
-		
-def test(request):
-	return render(request, 'albums/test.html', {})
 
 def upload_photo(request):
 

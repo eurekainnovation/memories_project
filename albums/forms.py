@@ -41,7 +41,7 @@ class FileUploadForm(forms.ModelForm):
 	
 class NewAlbumForm(forms.ModelForm):
 
-	title =forms.CharField(max_length=128, help_text="Please enter the title of the album")
+	title =forms.CharField(max_length=128)
 	cover = forms.ImageField(required=True)
 	
 	class Meta:

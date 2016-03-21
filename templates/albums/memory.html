@@ -9,9 +9,11 @@
   <script src="{% static "js/albums-jquery.js" %}"></script>
   <script src="{% static "js/jquery.flip.min.js" %}"></script>
   <script src="{% static "js/albums-ajax.js" %}"></script>
+  <script src="{% static "js/add-photo.js" %}"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <style>.ui-autocomplete { z-index:2147483647; }</style>
+
 
 
 {% endblock %}
@@ -28,7 +30,6 @@
           </ul>
       </li>
         <li><a data-toggle="modal" data-target="#addModal" href="">Add Collaborator</a></li>
-        <li><a href="#">Another Option</a></li>
         <li class="divider"></li>
       <li><a href="#">Delete Album</a></li>
       <li class="divider"></li>
@@ -134,6 +135,9 @@
         <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" /></a>
       </div>
     </div>
+
+
+
     
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -145,15 +149,21 @@
                     <h4 class="modal-title">Upload Photo</h4>
                 </div>
                 <div class="modal-body">
-                    <div id="messages">
-                    </div>
+
             {% for hidden in upload_form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
       
       
             {% for field in upload_form.visible_fields %}
-                {{ field }}
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label">{{ field.label }}</label>
+                <div class="col-sm-5">
+                    {{ field }}
+                  </div>
+                  <div id="{{ field.auto_id }}e" class="col-sm-5" style="color:red;">
+                  </div>
+            </div>
             {% endfor %}
             
                 </div>
@@ -190,5 +200,6 @@
         </div>
     </div>
 </div>
+
         
 {% endblock %}

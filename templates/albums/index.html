@@ -4,11 +4,22 @@
 {% load staticfiles %}
 {% block title %}hello{% endblock %}
 
+{% block head_block %}
+
+
+
+  <script src="{% static "js/jquery-2.2.2.min.js" %}"></script>
+  <script src="{% static "js/albums-jquery.js" %}"></script>
+  <script src="{% static "js/albums-validate.js" %}"></script>
+
+{% endblock %}
+
 {% block body_block %}
   
 <div class="text-center">
     <h1>{{ user.username }}'s Albums</h1>
 </div>
+
 
 <br>
 <br>
@@ -44,29 +55,22 @@
                 </div>
                 
                 <div class="modal-body">
-  				<fieldset>
-        			{% for field in new_album_form %}
-            			{% if field.errors %}
-                		<div class="control-group error">
-                    		<label class="control-label">{{ field.label }}</label> 
-                    		<div class="controls">{{ field }}
-                        		<span class="help-inline">
-                            		{% for error in  field.errors %}{{ error }}{% endfor %}
-                        		</span>
-                    		</div>
-                		</div>
-            			{% else %}
-                		<div class="control-group">
-                    		<label class="control-label">{{ field.label }}</label> 
-                    		<div class="controls">{{ field }}
-                        		{% if field.help_text %}
-                            	<p class="help-inline"><small>{{ field.help_text }}</small></p>
-                        		{% endif %}
-                    		</div>
-                		</div>
-            		{% endif %}
+
+                    {% for field in new_album_form %}
+
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 form-control-label">{{ field.label }}</label>
+                        <div class="col-sm-5">
+                            {{ field }}
+                        </div>
+                        <div id="{{ field.auto_id }}e" class="col-sm-5" style="color:red;">
+                        </div>
+                    </div>
+
        			 {% endfor %}
-   			 </fieldset>
+
+
+             <br>
    			 <p>You'll be able to choose collaborators and others to share with in the options bar on the next page</p>
 			</div>
                 
@@ -78,8 +82,6 @@
         </div>
     </div>
 </div>
-
-
       
     {% endblock %}
     
