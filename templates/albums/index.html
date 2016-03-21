@@ -6,32 +6,32 @@
 
 {% block body_block %}
   
-		<div class="text-center">
-             <h1>{{ user.username }}'s Albums</h1>
-        </div>
+<div class="text-center">
+    <h1>{{ user.username }}'s Albums</h1>
+</div>
+
 <br>
 <br>
 
-		{% if gallery %}
-            <div class="row">
-                {% for i in gallery %}
-                <div class="col-md-12">
-                	<div class="well">
-                    	<a href = "{{ i.albums.slug }}"><img class="thumbnail img-responsive" src="../media/{{ i.albums.cover_picture }}" alt="Picture of Rango" /></a>
-                	</div>
-            	</div>
-                <!-- Following line changed to add an HTML hyperlink -->
-                
-                {% endfor %}
-                <div class="col-md-12">
-                	<div class="well">
-                    	<a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newalbums.png" %}" /></a>
-                	</div>
-            	</div>
+{% if gallery %}
+    <div class="row">
+        {% for i in gallery %}
+        <div class="col-md-12">
+            <div class="well">
+                <a href = "{{ i.albums.slug }}"><img class="thumbnail img-responsive" src="../media/{{ i.albums.cover_picture }}" alt="pic" /></a>
             </div>
-       {% else %}
-            <strong>There are no categories present.</strong>
-       {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="col-md-12">
+    <div class="well">
+        <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newalbums.png" %}" /></a>
+    </div>
+</div>
+
+
 
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog">

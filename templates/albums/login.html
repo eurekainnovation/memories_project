@@ -4,10 +4,18 @@
 {% block head_block %}
  <link rel="stylesheet" href="{% static "css/login.css" %}">
 {% endblock %}
-
+{% block invalid_credentials_block %}
+{% if validate %}
+ <div class="form-group" style="color:red;">Invalid log in details&nbsp; </div>
+{% endif %}
+ {% endblock %}
+ 
 {% block body_block %}
 
+
+
 	
+
 <div class = "full">	
 <div class="container">
 	<h1>Not registered? Sign Up below</h1>
@@ -73,9 +81,8 @@
                 <div class="form-group">
                     <label for="InputPhoto">{{profile_form.picture.label}}</label>
                     <div class="input-group">
-                        <input type="file" class="form-control" id="picture" name="picture" placeholder="Upload Photo">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
+                        <input type="file"  id="picture" name="picture" placeholder="Upload Photo">
+                   </div>
                 </div>      
                 <input type="submit" name="submit" id="submit" value="Register" class="btn btn-secondary pull-right">
             </div>

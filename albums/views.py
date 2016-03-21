@@ -20,7 +20,7 @@ import json
 
 @login_required
 def index(request):
-	print(request.user.username)
+
 	#List of gallery objects
 	gallery_list = Gallery.objects.filter(usr = request.user )
 
@@ -98,7 +98,6 @@ def register(request):
 			
 		# Invalid forms, print mistakes to the terminal
 		else:
-			print user_form.errors, profile_form.errors
 			failed = True
 		
 	#Not a HTTP POST so render form using 2 modelForm instances			
@@ -110,9 +109,10 @@ def register(request):
 	
 	
 def user_login(request):
+		
 
-    # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
+
         # Gather the username and password provided by the user.
         # This information is obtained from the login form.
                 # We use request.POST.get('<variable>') as opposed to request.POST['<variable>'],
@@ -137,17 +137,22 @@ def user_login(request):
                 return HttpResponseRedirect('/albums/')
             else:
                 # An inactive account was used - no logging in!
-                return HttpResponse("Your Rango account is disabled.")
+                return HttpResponse("Your memories account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
+            valid=True
+            user_form=UserForm()
+            profile_form=UserProfileForm()
+            return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form, 'validate': valid})
+
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
+
 		user_form = UserForm()
 		profile_form = UserProfileForm()
+
 		# No context variables to pass to the template system, hence the
 		# blank dictionary object...
 		return render(request, 'albums/login.html', {'user_form': user_form, 'profile_form': profile_form})
@@ -300,7 +305,7 @@ def add_collaborator(request):
 	return HttpResponse('guy/gal added')
 
 def suggest_users(request):
-        print "HELLO!!!!"
+
         usr_names = []
         sw = ''
 
