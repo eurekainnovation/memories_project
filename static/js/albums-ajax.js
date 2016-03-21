@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
 $('#save-add-user').click(function(){
-//$('#addModal').modal.hide();
-//$('.modal-backdrop').hide();
+	$('#addModal').modal('toggle');
 });
 
 $('#collaborator').keyup(function(){

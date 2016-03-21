@@ -231,7 +231,7 @@ def upload_photo(request):
         else :
 			print('form not valid')
 
-    return HttpResponse('success')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 	
 @login_required
 def new(request):
