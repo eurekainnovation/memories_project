@@ -54,7 +54,7 @@
   <div class="carousel-inner">
 
     <div class="item active">
-      <a href="#"><img id="pic" src="/media/{{ album.cover_picture }}" alt="cover photo" /></a>
+      <a href="#"><img src="/media/{{ album.cover_picture }}" alt="cover photo" /></a>
       <div class="carousel-caption">
         <h2><a href="" class="albumlink">{{ album.title }}</a></h2>
         <h3>{{ album.date|date:"d M Y" }}</h3>
@@ -84,13 +84,13 @@
 
 
   {% if photos %}
-  <div class = "row" id="wi">
+  <div class = "row wi">
     {% for photo in photos %}
       {% if photos %}
-      <div class="col-sm-4 nopadding" id="fi">
+      <div class="col-sm-4 nopadding fi">
         <div class="card">
           <div class="front">
-            <img id ="pic" src="/media/{{ photo.photo }}" />
+            <img src="/media/{{ photo.photo }}" />
           </div>
           <div class="back" style="padding: 10px;">
               <div style="height: 100%">
@@ -112,7 +112,7 @@
                    <div class="row">
                    <div class="noflips">
                    <form class ="form-inline" id="message_post" target="hidden-form" action="{% url 'comment' %}" method="post">{% csrf_token %}
-                    <div class="form-group col-xs-10" id="box">
+                    <div class="form-group col-xs-10 box">
                             <input id="comment" onkeydown="if (event.keyCode == 13) {postmsg(this.form,{{ photo.id }},'/media/{{artist_pic}}','{% url 'comment' %}')}" style class="form-control" name="comment" placeholder="Comment" type="text">
                             <input id="photoID" style class="form-control" name="photoID" value="{{ photo.id }}" type="hidden" >
                         </div>
@@ -130,7 +130,7 @@
     {% endfor %}
   {% endif %}
       <div class="col-sm-4 nopadding" id="fi">
-        <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" /></a>
+        <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" src="{% static "images/newphoto.png" %}" /></a>
       </div>
     </div>
 

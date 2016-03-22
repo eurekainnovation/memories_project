@@ -4,14 +4,14 @@ html, body {
 }
 
 
-#fi {
+.fi {
 
   height:70%;
   border:solid #f2f2f2 3px;
 }
 
 
-#wi {
+.wi {
 
   height:100%;
 }
@@ -96,6 +96,7 @@ max-height: 360px;
 #comment {
 width:100% !important;
 }
+
 #message {
 padding-top:15px !important;
 }
@@ -144,7 +145,7 @@ margin-bottom:15px !important;
     border-radius:6px 0 6px 6px;
 }
 
-#box {
+.box {
   padding-bottom: 10px;
 }
 
