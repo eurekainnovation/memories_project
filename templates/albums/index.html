@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block body_block %}
-  
+
 <div class="text-center">
     <h1>{{ user.username }}'s Albums</h1>
 </div>
@@ -29,7 +29,7 @@
         {% for i in gallery %}
         <div class="col-md-12">
             <div class="well">
-                <a href = "{{ i.albums.slug }}"><img class="thumbnail img-responsive" src="../media/{{ i.albums.cover_picture }}" alt="pic" /></a>
+                <a href = "{{ i.albums.slug }}"><img class="thumbnail img-responsive" src="/media/{{ i.albums.cover_picture }}" alt="pic" /></a>
             </div>
         </div>
         {% endfor %}
@@ -53,7 +53,7 @@
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title">Choose Cover Photo & Title</h4>
                 </div>
-                
+
                 <div class="modal-body">
 
                     {% for field in new_album_form %}
@@ -73,7 +73,7 @@
              <br>
    			 <p>You'll be able to choose collaborators and others to share with in the options bar on the next page</p>
 			</div>
-                
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Create</button>
@@ -82,6 +82,6 @@
         </div>
     </div>
 </div>
-      
+
     {% endblock %}
-    
+

@@ -25,11 +25,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media direct
 SECRET_KEY = '5=noty=6&)lks4a#53k-j2^nhtotaw0@luajp*3u5@tf^nf1d3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['memories.pythonanywhere.com']
 
 
 # Application definition
