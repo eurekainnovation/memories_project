@@ -91,7 +91,7 @@ max-height: 360px;
 .nopadding {
    padding: 0 !important;
    margin: 0 !important;
-   
+
 }
 #comment {
 width:100% !important;
@@ -99,7 +99,7 @@ width:100% !important;
 #message {
 padding-top:15px !important;
 }
-#thread {
+.thread {
 margin-bottom:15px !important;
 }
 .dropdown-submenu {
