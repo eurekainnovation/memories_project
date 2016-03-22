@@ -3,13 +3,13 @@ from albums import views
 
 #Notes to self $ and ^ are regular expression characters that have special meaning
 #The caret means that the pattern must match the start of the string eg rango/hisabout would still load the about page without it
-#The dollar means that the pattern must match the end of the string eg rango/aboutblahblah would still load the about page without it 
+#The dollar means that the pattern must match the end of the string eg rango/aboutblahblah would still load the about page without it
 
 #The 'r' in front of each regular expression string is optional but recommended.
 #It tells Python that a string is "raw" - that nothing in the string should be escaped.
 
 
-#For the 4th entry in the list 
+#For the 4th entry in the list
 #the second parameter comes from the parenthesis inserted in urls.py (?P<category_name_slug>[\w\-]+)
 #Parenthesis around anything will create new arguments that are passed to views.py
 
@@ -25,6 +25,6 @@ urlpatterns = patterns('',
         url(r'^remove/(?P<album_id>[\w\-]+)/$', views.remove, name='remove'),
         url(r'^suggest_users/$', views.suggest_users, name='suggest_users'),
         url(r'^(?P<album_name_slug>[\w\-]+)/$', views.memory, name='memory'),
-        
-       
+
+
 )

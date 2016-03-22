@@ -38,7 +38,7 @@
 
 <div class="col-md-12">
     <div class="well">
-        <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newalbums.png" %}" /></a>
+        <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newalbums.png" %}" alt="new-album"/></a>
     </div>
 </div>
 
@@ -47,7 +47,7 @@
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
-        	<form action="{% url 'new' %}" method="post" id="new_album_form" enctype="multipart/form-data" role="form">
+        	<form action="{% url 'new' %}" method="post" id="new_album_form" enctype="multipart/form-data">
         	{% csrf_token %}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -59,7 +59,7 @@
                     {% for field in new_album_form %}
 
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 form-control-label">{{ field.label }}</label>
+                        <label class="col-sm-2 form-control-label">{{ field.label }}</label>
                         <div class="col-sm-5">
                             {{ field }}
                         </div>
