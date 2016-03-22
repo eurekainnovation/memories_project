@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
+
 from django.template.defaultfilters import slugify
+import datetime
+from django.utils import timezone
+
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, related_name='profile')
@@ -15,7 +18,7 @@ class Album(models.Model):
     title = models.CharField(max_length=128)
     cover_picture = models.ImageField(upload_to='cover_images', blank=True)
     slug = models.SlugField()
-    date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
+    date = models.DateTimeField(default=timezone.now(), blank=True)
     
     def save(self, *args, **kwargs):
             # Uncomment if you don't want the slug to change every time the name changes
@@ -37,7 +40,7 @@ class Gallery(models.Model):
 class Photo(models.Model):
     album = models.ForeignKey(Album)
     photo = models.ImageField(upload_to='album_images', blank=False)
-    name = models.CharField(max_length=128, default=datetime.datetime.now())
+    name = models.CharField(max_length=128, default=timezone.now())
     
     def __unicode__(self):
         return self.name
@@ -45,7 +48,7 @@ class Photo(models.Model):
 
 class Message(models.Model):
     photo = models.ForeignKey(Photo)
-    comment = models.CharField(max_length=512, unique=True)
+    comment = models.CharField(max_length=512, unique=False)
     usr = models.ForeignKey(User, null=True)
 
     def __unicode__(self):
