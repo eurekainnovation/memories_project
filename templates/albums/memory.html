@@ -84,10 +84,10 @@
 
 
   {% if photos %}
-  <div class = "row" id="fi">
+  <div class = "row" id="wi">
     {% for photo in photos %}
       {% if photos %}
-      <div class="col-sm-4 nopadding">
+      <div class="col-sm-4 nopadding" id="fi">
         <div class="card">
           <div class="front">
             <img id ="pic" src="/media/{{ photo.photo }}" />
@@ -112,7 +112,7 @@
                    <div class="row">
                    <div class="noflips">
                    <form class ="form-inline" id="message_post" target="hidden-form" action="{% url 'comment' %}" method="post">{% csrf_token %}
-                    <div class="form-group col-xs-10">
+                    <div class="form-group col-xs-10" id="box">
                             <input id="comment" onkeydown="if (event.keyCode == 13) {postmsg(this.form,{{ photo.id }},'/media/{{artist_pic}}','{% url 'comment' %}')}" style class="form-control" name="comment" placeholder="Comment" type="text">
                             <input id="photoID" style class="form-control" name="photoID" value="{{ photo.id }}" type="hidden" >
                         </div>
@@ -129,7 +129,7 @@
       {% endif %}
     {% endfor %}
   {% endif %}
-      <div class="col-sm-4 nopadding">
+      <div class="col-sm-4 nopadding" id="fi">
         <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" id ="pic" src="{% static "images/newphoto.png" %}" /></a>
       </div>
     </div>

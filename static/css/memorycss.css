@@ -1,3 +1,22 @@
+html, body {
+  height: 80%;
+
+}
+
+
+#fi {
+
+  height:70%;
+  border:solid #f2f2f2 3px;
+}
+
+
+#wi {
+
+  height:100%;
+}
+
+
 .carousel img {
   min-width: 100%;
   height: 100px;
@@ -15,12 +34,8 @@
           box-sizing: border-box;
 }
 
-  .nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
 
-      .card .front {
+.card .front {
     background-color: #eee;
 }
 
@@ -31,7 +46,7 @@ overflow: scroll;
 
 }
 .front img{
-      height: inherit;
+    height: inherit;
     width: 100%;
 }
 .card {
@@ -127,4 +142,8 @@ margin-bottom:15px !important;
     -webkit-border-radius:6px 0 6px 6px;
     -moz-border-radius:6px 0 6px 6px;
     border-radius:6px 0 6px 6px;
+}
+
+#box {
+  padding-bottom: 10px;
 }
