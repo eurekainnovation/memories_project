@@ -97,7 +97,7 @@ max-height: 360px;
 width:100% !important;
 }
 
-#message {
+.message {
 padding-top:15px !important;
 }
 .thread {
