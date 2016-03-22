@@ -9,22 +9,22 @@
  <div class="form-group" style="color:red;">Invalid log in details&nbsp; </div>
 {% endif %}
  {% endblock %}
- 
+
 {% block body_block %}
 
 
 
-	
 
-<div class = "full">	
+
+<div class = "full">
 <div class="container">
 	<h1>Not registered? Sign Up below</h1>
 	<br><br>
     <div class="row">
-    
+
         <div class="col-md-5">
         	<h2>Sign up to start sharing your most important memories with your most important people! </h2>
-                    
+
             <div class="col-md-12" id="success">
                 {% if registered %}
                 <div class="alert alert-success">
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-		<form id="user_form" method="post" action="/albums/signup/" enctype="multipart/form-data">
+		<form id="user_form" method="post" action="/signup/" enctype="multipart/form-data">
         {% csrf_token %}
         	<div class="col-md-5 col-md-offset-1">
                 <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
@@ -83,13 +83,13 @@
                     <div class="input-group">
                         <input type="file"  id="picture" name="picture" placeholder="Upload Photo">
                    </div>
-                </div>      
+                </div>
                 <input type="submit" name="submit" id="submit" value="Register" class="btn btn-secondary pull-right">
             </div>
         </form>
-    
+
     </div>
 </div>
 </div>
-	
+
 {% endblock %}

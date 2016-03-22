@@ -41,8 +41,8 @@
 {% block body_block %}
 
 
- 
- 
+
+
 <div id="carousel-example" class="carousel slide" data-interval="false">
   <ol class="carousel-indicators">
      <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
@@ -52,17 +52,17 @@
   </ol>
 
   <div class="carousel-inner">
-    
+
     <div class="item active">
       <a href="#"><img id="pic" src="/media/{{ album.cover_picture }}" alt="cover photo" /></a>
       <div class="carousel-caption">
-        <h2><a href="{{ album.slug }}" class="albumlink">{{ album.title }}</a></h2>
+        <h2><a href="" class="albumlink">{{ album.title }}</a></h2>
         <h3>{{ album.date|date:"d M Y" }}</h3>
       </div>
     </div>
-    
+
     {% for cover in covers %}
-    
+
     <div class="item">
       <a href="#"><img src="/media/{{ cover.cover_picture }}" /></a>
       <div class="carousel-caption">
@@ -70,7 +70,7 @@
         <h3>{{ cover.date|date:"d M Y" }}</h3>
       </div>
     </div>
-    
+
     {% endfor %}
   </div>
 
@@ -95,20 +95,20 @@
           <div class="back" style="padding: 10px;">
               <div style="height: 100%">
                 {% for message in comments %}
-                {% if message.photo =  photo %} 
-                <div class="row" id="thread"> 
+                {% if message.photo =  photo %}
+                <div class="row" id="thread">
                   <div class="col-xs-2">
                      <img class="img-circle center-block" src=" /media/{{message.usr.profile.picture}}" alt="Cinque Terre" width="50" height="50">
                   </div>
                   <div class="col-xs-10" id="message">
                     <p>{{message.usr.username}}: {{message.comment}}</p>
-                
+
                   </div>
                    </div>
                    {% endif %}
                    {% endfor %}
               <div id="{{ photo.id }}new_msg"></div>
-              <IFRAME style="display:none" name="hidden-form"></IFRAME>  
+              <IFRAME style="display:none" name="hidden-form"></IFRAME>
                    <div class="row">
                    <div class="noflips">
                    <form class ="form-inline" id="message_post" target="hidden-form" action="{% url 'comment' %}" method="post">{% csrf_token %}
@@ -116,11 +116,11 @@
                             <input id="comment" onkeydown="if (event.keyCode == 13) {postmsg(this.form,{{ photo.id }},'/media/{{artist_pic}}','{% url 'comment' %}')}" style class="form-control" name="comment" placeholder="Comment" type="text">
                             <input id="photoID" style class="form-control" name="photoID" value="{{ photo.id }}" type="hidden" >
                         </div>
-                        
+
                         <button id="post_btn" type="button" value="post message" class="btn btn-default" onClick="postmsg(this.form,{{ photo.id }},'/media/{{artist_pic}}','{% url 'comment' %}')">Post</button>
-                        
-             </form>     
-             </div>                   
+
+             </form>
+             </div>
                    </div>
               </div>
           </div>
@@ -136,7 +136,7 @@
 
 
 
-    
+
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -151,8 +151,8 @@
             {% for hidden in upload_form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
-      
-      
+
+
             {% for field in upload_form.visible_fields %}
             <div class="form-group row">
                 <label class="col-sm-2 form-control-label">{{ field.label }}</label>
@@ -163,7 +163,7 @@
                   </div>
             </div>
             {% endfor %}
-            
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -199,5 +199,5 @@
     </div>
 </div>
 
-        
+
 {% endblock %}

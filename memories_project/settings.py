@@ -64,7 +64,7 @@ ROOT_URLCONF = 'memories_project.urls'
 
 WSGI_APPLICATION = 'memories_project.wsgi.application'
 
-LOGIN_URL = '/albums/login/'
+LOGIN_URL = '/login/'
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 # Database
