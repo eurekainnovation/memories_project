@@ -29,7 +29,7 @@
       </li>
         <li><a data-toggle="modal" data-target="#addModal" href="">Add Collaborator</a></li>
         <li class="divider"></li>
-      <li><a href="#">Delete Album</a></li>
+      <li><a href="../remove/{{ album.id }}">Delete Album</a></li>
       <li class="divider"></li>
     </ul>
 </li>
@@ -56,7 +56,7 @@
     <div class="item active">
       <a href="#"><img id="pic" src="/media/{{ album.cover_picture }}" alt="cover photo" /></a>
       <div class="carousel-caption">
-        <h2>{{ album.title }}</h2>
+        <h2><a href="{{ album.slug }}" class="albumlink">{{ album.title }}</a></h2>
         <h3>{{ album.date|date:"d M Y" }}</h3>
       </div>
     </div>
@@ -66,7 +66,7 @@
     <div class="item">
       <a href="#"><img src="/media/{{ cover.cover_picture }}" /></a>
       <div class="carousel-caption">
-        <h2>{{ cover.title }}</h2>
+        <h2><a class="albumlink" href="../{{ cover.slug }}">{{ cover.title }}</a></h2>
         <h3>{{ cover.date|date:"d M Y" }}</h3>
       </div>
     </div>

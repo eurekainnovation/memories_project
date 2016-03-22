@@ -255,6 +255,15 @@ def new(request):
 	return HttpResponseRedirect(reverse('index', args=(), kwargs={}))
 
 @login_required
+def remove(request, album_id):
+
+	albumOb = Album.objects.get(pk=album_id)
+	gallery = Gallery.objects.filter(usr = request.user, albums= albumOb).delete()
+
+	return HttpResponseRedirect(reverse('index', args=(), kwargs={}))
+
+
+@login_required
 def post_comment(request):
 
 	if request.method == 'POST':
