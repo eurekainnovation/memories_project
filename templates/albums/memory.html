@@ -54,7 +54,7 @@
   <div class="carousel-inner">
 
     <div class="item active">
-      <a href="#"><img src="/media/{{ album.cover_picture }}" alt="cover photo" /></a>
+      <a href="#"><img src="/media/{{ album.cover_picture }}" alt="cover" /></a>
       <div class="carousel-caption">
         <h2><a href="" class="albumlink">{{ album.title }}</a></h2>
         <h3>{{ album.date|date:"d M Y" }}</h3>
@@ -64,7 +64,7 @@
     {% for cover in covers %}
 
     <div class="item">
-      <a href="#"><img src="/media/{{ cover.cover_picture }}" /></a>
+      <a href="#"><img src="/media/{{ cover.cover_picture }}" alt="cover" /></a>
       <div class="carousel-caption">
         <h2><a class="albumlink" href="../{{ cover.slug }}">{{ cover.title }}</a></h2>
         <h3>{{ cover.date|date:"d M Y" }}</h3>
@@ -90,7 +90,7 @@
       <div class="col-sm-4 nopadding fi">
         <div class="card">
           <div class="front">
-            <img src="/media/{{ photo.photo }}" />
+            <img src="/media/{{ photo.photo }}" alt="album-pic" />
           </div>
           <div class="back" style="padding: 10px;">
               <div style="height: 100%">
@@ -111,10 +111,10 @@
               <IFRAME style="display:none" name="hidden-form"></IFRAME>
                    <div class="row">
                    <div class="noflips">
-                   <form class ="form-inline" id="message_post" target="hidden-form" action="{% url 'comment' %}" method="post">{% csrf_token %}
+                   <form class ="form-inline" target="hidden-form" action="{% url 'comment' %}" method="post">{% csrf_token %}
                     <div class="form-group col-xs-10 box">
                             <input id="comment" onkeydown="if (event.keyCode == 13) {postmsg(this.form,{{ photo.id }},'/media/{{artist_pic}}','{% url 'comment' %}')}" style class="form-control" name="comment" placeholder="Comment" type="text">
-                            <input id="photoID" style class="form-control" name="photoID" value="{{ photo.id }}" type="hidden" >
+                            <input style class="form-control" name="photoID" value="{{ photo.id }}" type="hidden" >
                         </div>
 
                         <button id="post_btn" type="button" value="post message" class="btn btn-default" onClick="postmsg(this.form,{{ photo.id }},'/media/{{artist_pic}}','{% url 'comment' %}')">Post</button>
@@ -130,7 +130,7 @@
     {% endfor %}
   {% endif %}
       <div class="col-sm-4 nopadding" id="fi">
-        <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" src="{% static "images/newphoto.png" %}" /></a>
+        <a data-toggle="modal" data-target="#myModal" href=""><img class="img-responsive" alt="addnew" src="{% static "images/newphoto.png" %}" /></a>
       </div>
     </div>
 
